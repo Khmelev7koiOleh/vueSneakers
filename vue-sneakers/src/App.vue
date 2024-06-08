@@ -9,7 +9,7 @@ import Drawer from './components/Drawer.vue'
 const items = ref([])
 const cart = ref([])
 const isCreatingOrder = ref(false)
-
+const lolr = console.log('lofe')
 const drawerOpen = ref(false)
 const totalPrice = computed(() => cart.value.reduce((acc, item) => acc + item.price, 0))
 const vatPrice = computed(() => Math.round((totalPrice.value * 5) / 100))
