@@ -5,6 +5,7 @@ import axios from 'axios'
 import Header from './components/Header.vue'
 import CardList from './components/CardList.vue'
 import Drawer from './components/Drawer.vue'
+import CartItem from './components/CartItem.vue'
 
 const items = ref([])
 const cart = ref([])
@@ -25,7 +26,7 @@ const openDrawer = () => {
 }
 
 const filters = reactive({
-    sortBy: '',
+    sortBy: 'title',
     searchQuery: ''
   }),
   addToCart = (item) => {
@@ -61,7 +62,10 @@ const createOrder = async () => {
   }
 
 const onChangeSelect = (event) => {
-    filters.sortBy = event.target.value
+  filters.sortBy = event.target.value
+}
+const onChangeSearchInput = (event) => {
+    filters.searchQuery = event.target.value
   },
   fetchFavorites = async () => {
     try {
@@ -127,6 +131,10 @@ onMounted(async () => {
   cart.value = localCart ? JSON.parse(localCart) : []
   await fetchItems()
   await fetchFavorites()
+  items.value = items.value.map((item) => ({
+    ...item,
+    isAdded: cart.value.some((cartItem) => cartItem.id === item.id)
+  }))
 }),
   watch(filters, fetchItems)
 watch(cart, () => {
