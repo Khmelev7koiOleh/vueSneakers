@@ -33,9 +33,9 @@ const visibleFavoriteButton = Boolean(props.onClickAdd)
       </div>
       <img
         v-if="onClickAdd"
-        @click="onClickAdd"
         :src="!isAdded ? '/plus.svg' : '/checked.svg'"
         alt="Plus"
+        @click="onClickAdd"
       />
     </div>
   </div>

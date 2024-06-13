@@ -76,6 +76,7 @@ watch(
       v-if="drawerOpen"
     />
   </div>
+  ,
   <div class="m-auto w-4/5 bg-white rounded-xl shadow-xl mt-10">
     <Header :total-price="totalPrice" @open-drawer="openDrawer" />
     <div class="p-10">

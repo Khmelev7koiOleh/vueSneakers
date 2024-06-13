@@ -1,10 +1,9 @@
 <script setup>
-import { ref, onMounted } from 'vue'
 import axios from 'axios'
-
+import { ref, onMounted } from 'vue'
 import CardList from '../components/CardList.vue'
-
 const favorites = ref([])
+
 onMounted(async () => {
   try {
     const { data } = await axios.get(
@@ -17,6 +16,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <h1>My favorites</h1>
+  <h2 class="font-3xl font-bold mb-8">My favorites</h2>
+
   <CardList :items="favorites" is-favorites />
 </template>
