@@ -1,6 +1,6 @@
 <script setup>
 import { inject } from 'vue'
-defineProps({
+const props = defineProps({
   id: Number,
   title: String,
   imageUrl: String,
@@ -10,13 +10,14 @@ defineProps({
   onClickAdd: Function,
   onClickFavorite: Function
 })
+const visibleFavoriteButton = Boolean(props.onClickAdd)
 </script>
 <template>
   <div
     class="relative bg-white border border-slatet-100 rounded-3xl p-8 cursor-pointer hover:-translate-y-2 hover:shadow-xl transition"
   >
-    <img src="/like-1.svg" alt="Like-1" class="absolute top-8 left-8" />
     <img
+      v-if="onClickFavorite"
       :src="!isFavorite ? '/like-1.svg' : '/like-2.svg'"
       alt="Like-1"
       class="absolute top-8 left-8"
@@ -30,7 +31,12 @@ defineProps({
         <span>Price</span>
         <b>{{ price }}</b>
       </div>
-      <img :src="!isAdded ? '/plus.svg' : '/checked.svg'" alt="Plus" @click="onClickAdd" />
+      <img
+        v-if="onClickAdd"
+        @click="onClickAdd"
+        :src="!isAdded ? '/plus.svg' : '/checked.svg'"
+        alt="Plus"
+      />
     </div>
   </div>
 </template>
