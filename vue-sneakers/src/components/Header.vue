@@ -27,7 +27,7 @@ const emit = defineEmits(['openDrawer'])
       <RouterLink to="/favorites"
         ><li class="flex items-center gap-3 text-gray-500 cursor-pointer hover:text-black">
           <img src="/heart.svg" alt="Heart" />
-          <span>Heart</span>
+          <span>Hearts</span>
         </li></RouterLink
       >
       <li class="flex items-center gap-3 text-gray-500 cursor-pointer hover:text-black">
