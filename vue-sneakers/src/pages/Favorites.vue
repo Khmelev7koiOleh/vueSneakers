@@ -1,7 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import Cardlist from '../components/CardList.vue'
+
+import CardList from '../components/CardList.vue'
 
 const favorites = ref([])
 onMounted(async () => {
